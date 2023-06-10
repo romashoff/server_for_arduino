@@ -1,0 +1,101 @@
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arduino Info</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.6.4.js" integrity="sha256-a9jBBRygX1Bh5lt8GZjXDzyOB+bWve9EiO7tROUtj/E=" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="/css/style.css">
+    <script src="https://cdn.socket.io/4.5.4/socket.io.min.js"></script>
+    <script defer src="/js/inputmask.min.js"></script>
+    <script src="js/serverConnect.js"></script>
+</head>
+
+<body>
+
+<h1>Arduino Info</h1>
+<div class="container" id="root">
+    <form id="form" action="" autocomplete="off" method="POST">
+        <div class="led_led">
+            <input class="led-btn" id="led" type="button" name="update" value="Led: off"/><br/>
+            <div id="led-active" class="light"></div>
+        </div>
+
+
+        <div class="search">
+            <input style="flex:1" class="form__search" id="search" type="datetime-local"
+                   placeholder="Введите дату в формате: год:месяц:день:час:минуты">
+            <button type="button" id="search_b" >
+                Поиск
+            </button>
+            <button type="button" id="clear_search_b" >
+                Очистить
+            </button>
+        </div>
+    </form>
+    <div id="sort" style="display: none">
+        <h2>Поиск</h2>
+        <table id="sortTable" class="table">
+            <thead>
+            <th class="thead">Дата</th>
+            <th class="thead">Температура</th>
+            <th class="thead">Влажность</th>
+            <th class="thead">Датчик</th>
+            </thead>
+            <tbody>
+
+            </tbody>
+        </table>
+    </div>
+    <div id="averages">
+        <h2>Средние значения</h2>
+        <table id="table" class="table">
+            <thead>
+                <th class="thead">Температура ср/ч</th>
+                <th class="thead">Влажность ср/ч</th>
+                <th class="thead">Температура ср/сут</th>
+                <th class="thead">Влажность ср/сут</th>
+            </thead>
+            <tbody>
+
+            </tbody>
+        </table>
+    </div>
+    <div id="last">
+        <h2>Последнее значение</h2>
+        <table id="last_table" class="table">
+            <thead>
+            <th class="thead">Дата</th>
+            <th class="thead">Температура</th>
+            <th class="thead">Влажность</th>
+            <th class="thead">Датчик</th>
+            </thead>
+            <tbody>
+
+            </tbody>
+        </table>
+    </div>
+</div>
+
+
+
+<div class="warning-temp" id="warningTempDecrease">
+    <h2>Опасность!</h2>
+    <p>
+        Температура понизилась ниже 10 градусов
+    </p>
+</div>
+<div class="warning-temp" id="warningTempExcess">
+    <h2>Опасность!</h2>
+    <p>
+        Температура превысила 30 градусов
+    </p>
+</div>
+<script defer src="/js/serverConnect.js"></script>
+</body>
+
+</html>
+
